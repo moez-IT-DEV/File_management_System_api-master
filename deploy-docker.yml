@@ -1,0 +1,17 @@
+---
+- hosts: dev
+  become: true
+  tasks:
+#    - name: Docker Login
+#      shell: "sudo docker login -u houaida0501 -p {{pwd}}"
+    - name: Pull default Docker image
+      shell: "sudo docker pull {{ default_container_image }}:{{DOCKER_TAG}}"
+# Creates the number of containers defined by the variable create_containers, using values from vars file
+    - name: Restart a container
+      docker_container:
+        name: "{{ default_container_name }}"
+        image: "{{ default_container_image }}:{{DOCKER_TAG}}"
+        state: started
+        restart: yes
+        ports:
+          - "7575:8070"
