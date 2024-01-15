@@ -1,6 +1,6 @@
 FROM maven:3.6.1-jdk-17 AS maven-build
-ARG JAR_FILE=target/*.jar
-WORKDIR /opt/app
-COPY ${JAR_FILE} app.jar
-EXPOSE 8085
-ENTRYPOINT ["java","-jar","app.jar"]
+COPY . .
+RUN mvn package
+FROM eclipse-temurin:17-jdk-jammy
+COPY target/File_management_System-0.0.1-SNAPSHOT.jar File_management_System
+CMD ["java", "-jar", "File_management_System-0.0.1-SNAPSHOT.jar"]
