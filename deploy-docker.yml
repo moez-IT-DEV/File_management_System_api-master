@@ -3,45 +3,7 @@
   become: true
   vars_files:
     - default.yml
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-
   tasks:
-    - name: Install aptitude using apt
-      apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
-
-    - name: Install required system packages
-      apt: name={{ item }} state=latest update_cache=yes
-      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'virtualenv']
-
-    - name: Add Docker GPG apt Key
-      apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present
-
-    - name: Add Docker Repository
-      apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu bionic stable
-        state: present
-
-    #- name: Update apt and install docker-ce
-     # apt: update_cache=yes name=docker-ce state=latest
-
-#    - name: Install Docker Module for Python
-#      pip:
-#        name: docker
-
-    - name: Pull default Docker image
-      shell: "sudo docker pull {{ default_container_image }}"
-
-    # Creates the number of containers defined by the variable create_containers, using values from vars file
-#    - name: Create default containers
-#      docker_container:
-#        name: "{{ default_container_name }}"
-#        image: "{{ default_container_image }}:{{DOCKER_TAG}}"
-#        state: present
-#        published_ports:
-#          - 0.0.0.0:8080:8080
     - name: Restart a container
       docker_container:
         name: "{{ default_container_name }}"
@@ -49,9 +11,4 @@
         state: started
         restart: yes
         ports:
-         - "8085:8080"    
-#    - name: run default containers
-#      shell: |
-#             "sudo docker container stop {{ default_container_name }}"
-#             "sudo docker rm {{ default_container_name }}"
-#             "sudo docker run -d -p 8080:8080 --name {{ default_container_name }} -v '/var/run/docker.sock:/var/run/docker.sock' {{ default_container_image }}:{{DOCKER_
+         - "8085:8080"
