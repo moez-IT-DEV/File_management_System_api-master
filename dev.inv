@@ -1,2 +1,2 @@
 [dev]
-172.16.238.128 ansible_user=moez ansible_password=moez
+172.16.238.128 ansible_user=moez ansible_password=moez ansible_sudo_pass=moez
