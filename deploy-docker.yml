@@ -1,5 +1,5 @@
 ---
-- hosts: 172.16.238.128
+- hosts: dev
   become: true
   tasks:
 #    - name: Docker Login
