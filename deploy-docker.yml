@@ -3,6 +3,8 @@
   become: true
   vars_files:
     - default.yml
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
   tasks:
     - name: Install aptitude using apt
