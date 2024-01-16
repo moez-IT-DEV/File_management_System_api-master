@@ -1,1 +1,2 @@
-
+default_container_name: docker_created_by_ansible
+default_container_image: moezdocker/file_management_spring
