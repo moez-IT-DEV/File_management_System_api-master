@@ -4,12 +4,12 @@
   tasks:
 
     - name: Pull default Docker image
-      shell: "sudo docker pull {{ default_container_image }}"
+      shell: "sudo docker pull moezdocker/file_management_spring"
 # Creates the number of containers defined by the variable create_containers, using values from vars file
     - name: Restart a container
       docker_container:
-        name: "{{ default_container_name }}"
-        image: "{{ default_container_image }}"
+        name: moezdocker/file_management_spring
+        image: moezdocker/file_management_spring
         state: started
         restart: yes
         ports:
