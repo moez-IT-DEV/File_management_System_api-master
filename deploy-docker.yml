@@ -2,7 +2,7 @@
 - hosts: dev
   become: true
   vars_files:
-    - vars/default.yml
+    - default.yml
 
   tasks:
     - name: Install aptitude using apt
