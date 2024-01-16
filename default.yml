@@ -1,0 +1,2 @@
+default_container_name: moezdocker/file_management_spring
+default_container_image: moezdocker/file_management_spring
