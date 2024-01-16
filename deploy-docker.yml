@@ -1,9 +1,11 @@
 ---
 - hosts: dev
   become: true
-  vars_files:
-    - default.yml
   tasks:
+
+    - name: Pull default Docker image
+      shell: "sudo docker pull {{ default_container_image }}"
+# Creates the number of containers defined by the variable create_containers, using values from vars file
     - name: Restart a container
       docker_container:
         name: "{{ default_container_name }}"
@@ -11,4 +13,4 @@
         state: started
         restart: yes
         ports:
-         - "8085:8080"
+          - "8085:8080"
