@@ -16,7 +16,7 @@ public class FirebaseInitialization {
         FileInputStream serviceAccount =
                 null;
         try {
-            serviceAccount = new FileInputStream("./flutter-24cbd-firebase-adminsdk-yxeww-75e67da11d.json");
+            // path file serviceAccount = new FileInputStream("./");
 
 
             FirebaseOptions options = new FirebaseOptions.Builder()
