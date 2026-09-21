@@ -11,5 +11,3 @@ Spring Boot REST API powering an enterprise document & workflow platform.
 ## Tech Stack
 Spring Boot · Spring MVC · MySQL · Docker · REST API
 
-## Run
-docker-compose up
